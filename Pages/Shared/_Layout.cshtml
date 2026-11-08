@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CargoFlow — учебное Razor Pages-приложение для управления складскими грузами." />
+    <title>@ViewData["Title"] — CargoFlow</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/wt_lab8_8razor_postgresql_yushkevich.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+         style="position:absolute;width:0;height:0;overflow:hidden">
+        <symbol id="i-box" viewBox="0 0 24 24">
+            <path d="M21 8.2 12 3 3 8.2v7.6L12 21l9-5.2V8.2Z" />
+            <path d="M3.4 8.4 12 13.3l8.6-4.9M12 13.3V21" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+            <path d="m20 6-11 11-5-5" />
+        </symbol>
+        <symbol id="i-layers" viewBox="0 0 24 24">
+            <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+            <path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
+        </symbol>
+        <symbol id="i-weight" viewBox="0 0 24 24">
+            <path d="M6.5 8h11l2 12h-15l2-12Z" />
+            <path d="M9.5 8a2.5 2.5 0 0 1 5 0M12 11l2 4" />
+        </symbol>
+        <symbol id="i-search" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14" />
+        </symbol>
+        <symbol id="i-pencil" viewBox="0 0 24 24">
+            <path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z" />
+            <path d="m14 6 3 3" />
+        </symbol>
+        <symbol id="i-arrow-right" viewBox="0 0 24 24">
+            <path d="M4 12h16m-6-6 6 6-6 6" />
+        </symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24">
+            <path d="M20 12H4m6 6-6-6 6-6" />
+        </symbol>
+        <symbol id="i-cpu" viewBox="0 0 24 24">
+            <rect x="6" y="6" width="12" height="12" rx="2" />
+            <rect x="10" y="10" width="4" height="4" rx="1" />
+            <path d="M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3" />
+        </symbol>
+        <symbol id="i-chair" viewBox="0 0 24 24">
+            <path d="M7 4h10v9H7zM5 9h2m10 0h2M7 13l-2 7m12-7 2 7M9 17h6" />
+        </symbol>
+        <symbol id="i-tools" viewBox="0 0 24 24">
+            <path d="M14.5 6.5a4 4 0 0 0 5 5l-8 8a2.8 2.8 0 0 1-4-4l8-8Z" />
+            <path d="M6 3l3 3-2 2-3-3V3h2Z" />
+        </symbol>
+        <symbol id="i-medical" viewBox="0 0 24 24">
+            <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+            <path d="M12 8v8M8 12h8" />
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24">
+            <path d="M10.3 4.1 2.7 17.3A1.8 1.8 0 0 0 4.3 20h15.4a1.8 1.8 0 0 0 1.6-2.7L13.7 4.1a1.9 1.9 0 0 0-3.4 0Z" />
+            <path d="M12 9v4m0 3.5v.1" />
+        </symbol>
+        <symbol id="i-trash" viewBox="0 0 24 24">
+            <path d="M4 7h16M10 3h4l1 4H9l1-4Zm-3 4 1 14h8l1-14M10 11v6m4-6v6" />
+        </symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24">
+            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+            <circle cx="12" cy="10" r="2.5" />
+        </symbol>
+        <symbol id="i-truck" viewBox="0 0 24 24">
+            <path d="M3 6h11v10H3zM14 9h4l3 3v4h-7" />
+            <circle cx="7" cy="18" r="2" />
+            <circle cx="18" cy="18" r="2" />
+        </symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+            <path d="M12 3 5 6v5c0 4.6 3 8.3 7 10 4-1.7 7-5.4 7-10V6l-7-3Z" />
+            <path d="m9 12 2 2 4-4" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24">
+            <path d="M4 20V10m5 10V4m5 16v-7m5 7V7" />
+        </symbol>
+    </svg>
+
+    @inject AppDbContext Db
+
+    @{
+        var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? string.Empty;
+        string NavClass(string page) =>
+            string.Equals(currentPage, page, StringComparison.OrdinalIgnoreCase)
+                ? "nav-link active"
+                : "nav-link";
+    }
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark app-navbar sticky-top">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" asp-page="/Index">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="#i-truck" /></svg>
+                    </span>
+                    <span class="brand-text">Cargo<span class="text-accent">Flow</span></span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNavigation" aria-controls="mainNavigation"
+                        aria-expanded="false" aria-label="Открыть навигацию">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavigation">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-1">
+                        <li class="nav-item">
+                            <a class="@NavClass("/Index")" asp-page="/Index">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="@NavClass("/Cargo/Index")" asp-page="/Cargo/Index">Грузы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="@NavClass("/Cargo/Create")" asp-page="/Cargo/Create">Добавить груз</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
+                        <span class="navbar-text d-none d-xl-inline small">
+                            <svg class="icon me-1" aria-hidden="true"><use href="#i-box" /></svg>
+                            @(await Db.Cargoes.CountAsync()) позиций
+                        </span>
+                        <a asp-page="/Cargo/Create" class="btn btn-sm btn-accent px-3">
+                            <svg class="icon me-1" aria-hidden="true"><use href="#i-plus" /></svg>
+                            Новый груз
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container py-4 py-lg-5">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="app-footer">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 py-4">
+            <div class="d-flex align-items-center gap-2">
+                <span class="brand-mark brand-mark--sm">
+                    <svg class="icon" aria-hidden="true"><use href="#i-truck" /></svg>
+                </span>
+                <span class="text-white-50 small">
+                    CargoFlow · учебный проект WT-8 на ASP.NET Core Razor Pages
+                </span>
+            </div>
+            <div class="d-flex gap-3 small">
+                <a class="footer-link" asp-page="/Index">Главная</a>
+                <a class="footer-link" asp-page="/Cargo/Index">Грузы</a>
+                <a class="footer-link" asp-page="/Cargo/Create">Добавить</a>
+                <a class="footer-link" href="https://github.com/Balur77/wt-lab5-5razor-yushkevich"
+                   target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

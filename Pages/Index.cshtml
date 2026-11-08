@@ -1,0 +1,166 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<section class="hero-section rounded-5 overflow-hidden mb-5">
+    <div class="row g-0 align-items-center">
+        <div class="col-lg-7 p-4 p-md-5">
+            <span class="badge rounded-pill hero-badge mb-3">
+                WT-5 · ASP.NET Core Razor Pages
+            </span>
+            <h1 class="display-5 fw-bold lh-sm mb-3">
+                Учёт грузов<br />
+                <span class="text-accent">без лишней бюрократии</span>
+            </h1>
+            <p class="lead hero-lead mb-4">
+                CargoFlow — учебное веб-приложение для управления складскими грузами:
+                каталог, подробные карточки, добавление, редактирование и удаление.
+                Данные хранятся в PostgreSQL.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3">
+                <a asp-page="/Cargo/Index" class="btn btn-accent btn-lg px-4">
+                    Перейти к грузам
+                </a>
+                <a asp-page="/Cargo/Create" class="btn btn-outline-light btn-lg px-4">
+                    Добавить груз
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-flex justify-content-center p-4">
+            <img src="~/images/warehouse-hero.svg"
+                 asp-append-version="true"
+                 class="hero-image img-fluid"
+                 alt="Иллюстрация складского помещения с коробками" />
+        </div>
+    </div>
+</section>
+
+<section class="mb-5" aria-labelledby="stats-heading">
+    <div class="d-flex align-items-end justify-content-between mb-3">
+        <div>
+            <h2 id="stats-heading" class="h4 fw-bold mb-1">Склад в цифрах</h2>
+            <p class="text-muted mb-0">Актуальное состояние единого хранилища данных</p>
+        </div>
+        <a asp-page="/Cargo/Index" class="btn btn-sm btn-outline-primary d-none d-md-inline-flex">
+            Весь каталог
+        </a>
+    </div>
+    <div class="row g-3 g-lg-4">
+        <div class="col-6 col-lg-3">
+            <div class="stat-card card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body">
+                    <span class="stat-icon bg-primary-subtle text-primary">
+                        <svg class="icon"><use href="#i-box" /></svg>
+                    </span>
+                    <p class="stat-value">@Model.PositionsCount</p>
+                    <p class="stat-label">позиций на складе</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body">
+                    <span class="stat-icon bg-success-subtle text-success">
+                        <svg class="icon"><use href="#i-check" /></svg>
+                    </span>
+                    <p class="stat-value">@Model.AvailableCount</p>
+                    <p class="stat-label">доступно к отгрузке</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body">
+                    <span class="stat-icon bg-warning-subtle text-warning-emphasis">
+                        <svg class="icon"><use href="#i-layers" /></svg>
+                    </span>
+                    <p class="stat-value">@Model.TotalQuantity.ToString("N0")</p>
+                    <p class="stat-label">единиц груза</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body">
+                    <span class="stat-icon bg-info-subtle text-info-emphasis">
+                        <svg class="icon"><use href="#i-weight" /></svg>
+                    </span>
+                    <p class="stat-value">@Model.TotalWeight.ToString("N0")</p>
+                    <p class="stat-label">кг общего веса</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mb-5" aria-labelledby="features-heading">
+    <h2 id="features-heading" class="h4 fw-bold mb-1">Возможности приложения</h2>
+    <p class="text-muted mb-4">Полный цикл работы с грузом на одной странице</p>
+    <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+            <article class="feature-card card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <span class="feature-icon">
+                        <svg class="icon"><use href="#i-search" /></svg>
+                    </span>
+                    <h3 class="h5 fw-semibold mt-3">Каталог и поиск</h3>
+                    <p class="text-muted mb-0">
+                        Адаптивные карточки грузов с фильтром по категории и быстрым поиском
+                        по названию, месту хранения и описанию.
+                    </p>
+                </div>
+            </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <article class="feature-card card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <span class="feature-icon">
+                        <svg class="icon"><use href="#i-plus" /></svg>
+                    </span>
+                    <h3 class="h5 fw-semibold mt-3">Добавление с валидацией</h3>
+                    <p class="text-muted mb-0">
+                        Форма на основе <code>[BindProperty]</code> проверяет обязательные поля,
+                        диапазоны значений и длину текста до сохранения.
+                    </p>
+                </div>
+            </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <article class="feature-card card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <span class="feature-icon">
+                        <svg class="icon"><use href="#i-pencil" /></svg>
+                    </span>
+                    <h3 class="h5 fw-semibold mt-3">Управление записями</h3>
+                    <p class="text-muted mb-0">
+                        Подробная карточка, редактирование и удаление с подтверждением.
+                        Все страницы работают с единым хранилищем <code>CargoStore</code>.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section aria-labelledby="recent-heading">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h2 id="recent-heading" class="h4 fw-bold mb-1">Недавно добавленные</h2>
+            <p class="text-muted mb-0">Последние позиции в каталоге</p>
+        </div>
+        <a asp-page="/Cargo/Index" class="btn btn-outline-primary">
+            Смотреть все
+            <svg class="icon ms-1"><use href="#i-arrow-right" /></svg>
+        </a>
+    </div>
+    <div class="row g-4">
+        @foreach (var cargo in Model.RecentCargoes)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <partial name="_CargoCard" model="cargo" />
+            </div>
+        }
+    </div>
+</section>

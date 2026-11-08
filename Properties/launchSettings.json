@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "wt-lab8-8razor-postgresql-yushkevich": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
